@@ -1,0 +1,11 @@
+torch
+torchvision
+torchaudio
+scipy
+Pillow
+matplotlib
+
+#dev
+black
+ipython
+ipykernel
