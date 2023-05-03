@@ -1,6 +1,5 @@
 torch
 torchvision
-torchaudio
 scipy
 Pillow
 matplotlib

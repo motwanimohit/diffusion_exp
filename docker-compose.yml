@@ -1,0 +1,11 @@
+version: "3.4"
+
+services:
+  diffusion:
+    image: diffusion
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    # build: Dockerfile
+    command: ["python", "main.py"]
+      
