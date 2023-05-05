@@ -4,7 +4,7 @@ services:
   diffusion:
     image: diffusion
     volumes:
-      - /Users/mo/Projects/datasets/stanford_cars/train/cars_train:/app/data/cars_train
-      - /Users/mo/Projects/datasets/stanford_cars/test/cars_test:/app/data/cars_test
+      - /home/mohitm/datasets/stanford_cars/cars_train/cars_train:/app/data/cars_train
+      - /home/mohitm/dataset/stanford_cars/cars_test/cars_test:/app/data/cars_test
       -  .:/app
     command: /bin/sh -c "while sleep 1000; do :; done"

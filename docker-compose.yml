@@ -3,9 +3,19 @@ version: "3.4"
 services:
   diffusion:
     image: diffusion
-    build: 
+    build:
       context: .
       dockerfile: Dockerfile
-    # build: Dockerfile
-    command: ["python", "main.py"]
-      
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [ gpu ]
+    volumes:
+      - /home/mohitm/datasets/stanford_cars/cars_train/cars_train:/app/data/cars_train
+      - /home/mohitm/dataset/stanford_cars/cars_test/cars_test:/app/data/cars_test
+      # - .:/app
+
+    command: [ "python", "training.py" ]

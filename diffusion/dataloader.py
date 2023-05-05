@@ -6,7 +6,7 @@ from PIL import Image
 import matplotlib.pyplot as plt
 
 from torch.utils.data import DataLoader
-
+from multiprocessing import cpu_count
     
 IMG_SIZE=64
 BATCH_SIZE = 128

@@ -13,6 +13,6 @@ COPY requirements.txt requirements.txt
 RUN pip install --no-cache-dir -r requirements.txt
 
 COPY diffusion/ diffusion/
-COPY main.py /app/main.py
+COPY training.py /app/training.py
 
-CMD ["python", "main.py"]
+CMD ["python", "training.py"]

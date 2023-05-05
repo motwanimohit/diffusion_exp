@@ -10,11 +10,11 @@ def get_index_from_list(vals: torch.tensor, t: torch.tensor, x_shape: tuple):
     out = vals.gather(-1, t.cpu())
     return out.reshape(batch_size, *((1,) * (len(x_shape) - 1))).to(t.device)
 
-def forward_diffusion(x_0, t, device = 'cpu'):
+def forward_diffusion(x_0, t):
     """
     Takes an image and a timestep t as input and returns the noisy version of the image
     """
-    
+    device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
     #noise from normal distribution like x_0
     noise = torch.randn_like(x_0, device=device)
     sqrt_alphas_cumprod_t = get_index_from_list(sqrt_alphas_cumprod, t, x_0.shape)
@@ -34,4 +34,4 @@ sqrt_recip_alphas = torch.sqrt(1.0/ alphas)
 sqrt_alphas_cumprod = torch.sqrt(alphas_cumprod)
 
 sqrt_one_minus_alphas_cumprod = torch.sqrt(1.0 - alphas_cumprod)
-posterior_variancee = betas * (1.0 - alphas_cumprod_prev) /  (1.0 - alphas_cumprod)
+posterior_variance = betas * (1.0 - alphas_cumprod_prev) /  (1.0 - alphas_cumprod)
