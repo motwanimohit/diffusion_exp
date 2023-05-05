@@ -1,0 +1,4 @@
+[submodule "brarista_ml"]
+	path = brarista_ml
+	url = git@github.com:Brarista/brarista_ml.git
+	branch = main

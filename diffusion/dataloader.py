@@ -64,5 +64,11 @@ def show_tensor_image(image):
 train_root_path = "data/cars_train"
 test_root_path = "data/cars_test"
 
+
+def get_data_loader(train_root_path, test_root_path, batch_size=BATCH_SIZE):
+    data = load_concatenated_dataset(train_root_path, test_root_path)
+    dataloader = DataLoader(data, batch_size=BATCH_SIZE, shuffle=True, drop_last=True)
+    return dataloader
+
 data = load_concatenated_dataset(train_root_path, test_root_path)
 dataloader = DataLoader(data, batch_size=BATCH_SIZE, shuffle=True, drop_last=True)

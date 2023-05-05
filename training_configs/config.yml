@@ -1,0 +1,24 @@
+---
+DATA:
+  TRAINING:
+    AUGMENTATION:
+        Resize: &resize
+          size: [64, 64]
+        RandomRandomHorizontalFlip: ~
+        ToTensor: ~
+    
+TRAINING:
+  model_name: Diffusion
+  version: 1.0
+
+  OPTIMIZER:
+    val: Adam
+    PARAMS:
+      lr: 0.001
+      
+  MODEL_PARAMS: ~
+
+  checkpoint_directory: "checkpoints"
+  epochs: 300
+
+...
