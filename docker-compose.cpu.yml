@@ -3,9 +3,12 @@ version: "3.4"
 services:
   diffusion:
     image: diffusion
+    build:
+      context: .
+      dockerfile: Dockerfile
     volumes:
       - /home/mohitm/datasets/stanford_cars/cars_train/cars_train:/app/data/cars_train
       - /home/mohitm/datasets/stanford_cars/cars_test/cars_test:/app/data/cars_test
-      - /data/training:/app/data/training
+      - .:/app
 
     command: [ "python", "training.py" ]
