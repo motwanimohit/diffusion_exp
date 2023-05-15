@@ -4,8 +4,8 @@ services:
   diffusion:
     image: diffusion
     volumes:
-      - /home/mohitm/datasets/stanford_cars/cars_train/cars_train:/app/data/cars_train
-      - /home/mohitm/datasets/stanford_cars/cars_test/cars_test:/app/data/cars_test
+      - /home/mohitm/datasets/stanford_cars/cars_train:/app/data/cars_train
+      - /home/mohitm/datasets/stanford_cars/cars_test:/app/data/cars_test
       - /data/training:/app/data/training
 
     command: [ "python", "training.py" ]

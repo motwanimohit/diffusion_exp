@@ -34,13 +34,16 @@ torch.manual_seed(42)
 def training_setup(args):
     config = builder.load_yaml(args.config_file)
     
-    dataloader = get_data_loader()
+    train_root_path = "data/cars_train"
+    test_root_path = "data/cars_test"
+    dataloader = get_data_loader(train_root_path, test_root_path)
 
     training_config = config['TRAINING']
 
     model_name = training_config['model_name']
     version = training_config['version']
-    model_params = training_config.get('MODEL_PARAMS', {})
+    model_params = training_config.get('MODEL_PARAMS')
+    model_params = model_params if model_params is not None else {}
     model = SimpleUnet(**model_params)
     optimizer = builder.build_optimizer(training_config['OPTIMIZER'], [{"params": model.parameters()}])
 
